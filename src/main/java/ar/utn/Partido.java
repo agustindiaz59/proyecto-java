@@ -22,7 +22,7 @@ public class Partido {
     public String toString(){
         return equipoLocal.toString() +": "+ puntosLocal +", "+  equipoVisitante.toString()+": "+puntosVisitante;
     }
-    public String resultado(Equipo e){
+    public String resultado(@org.jetbrains.annotations.NotNull Equipo e){
         String ganador;
         if(Objects.equals(e.getNombre(), equipoLocal.getNombre()) || Objects.equals(e.getNombre(), equipoVisitante.getNombre())){
             if(puntosLocal > puntosVisitante){
@@ -32,11 +32,11 @@ public class Partido {
             }else {ganador = "empate";}
 
             if(Objects.equals(ganador, e.getNombre())){
-                return "Felicidades tu equipo ganó";
+                return "Felicidades tu equipo ganó" + "\n\r"+ this;
             } else if (Objects.equals(ganador, "empate")) {
-                return "Fue un empate";
+                return "Fue un empate" + "\n\r"+ this;
             }else {
-                return "Tu equipo perdió";
+                return "Tu equipo perdió" + "\n\r"+ this;
             }
         }else{return "Ese equipo no está en juego";}
     }
