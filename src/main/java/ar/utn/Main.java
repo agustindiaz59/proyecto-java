@@ -36,7 +36,7 @@ public class Main {
 
         //Declaro la lista de Partidos con sus resultados y de predicciones o pronosticos
         ArrayList<Partido> partidos = new ArrayList<>();
-        ArrayList<String> apuesta = new ArrayList<>();
+        ArrayList<Pronostico> listaPronosticos = new ArrayList<>();
 
         //Cargo la lista de resultados
         while(resultados.hasNext()){
@@ -48,13 +48,19 @@ public class Main {
             partidos.add(new Partido(new Equipo(local),puntosLocal,puntosVisitante,new Equipo(visitante)));
         }
 
-        //Cargo la lista de predicciones
-        for (Partido p :partidos){
-            System.out.println("Quien crees que gane?");
-            System.out.println(p.getEquipoLocal()+" o "+p.getEquipoVisitante());
-            String ganador = teclado.next();
-            System.out.println(p.resultado(new Equipo(ganador)));
+        //Cargo las predicciones por teclado
+        //for (Partido p :partidos){
+        //    System.out.println("Quien crees que gane?");
+        //    System.out.println(p.getEquipoLocal()+" o "+p.getEquipoVisitante());
+        //    String ganador = teclado.next();
+        //    System.out.println(p.resultado(new Equipo(ganador)));
+        //}
+
+        for (Partido p : partidos){
+            Pronostico pronos = new Pronostico();
+            pronos.ganaLocal(pronosticos.hasNext());
+            pronos.empate(pronosticos.hasNext());
+            pronos.ganaVisitante(pronosticos.hasNext());
         }
-        System.out.println(apuesta);
     }
 }
