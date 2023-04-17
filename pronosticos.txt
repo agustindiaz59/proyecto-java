@@ -1,6 +1,6 @@
-Brasil;;X;;Croacia
-Mexico;X;;;Camerun
-Brasil;;;X;Mexico
-Camerun;X;;;Croacia
-Camerun;;;X;Brasil
-Croacia;;;X;Mexico
+Brasil;2;0;Croacia
+Mexico;0;0;Camerun
+Brasil;0;0;Mexico
+Camerun;2;2;Croacia
+Camerun;0;1;Brasil
+Croacia;3;2;Mexico

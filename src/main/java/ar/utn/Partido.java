@@ -3,42 +3,39 @@ package ar.utn;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Objects;
-
 @Getter@Setter
 public class Partido {
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private int puntosLocal;
     private int puntosVisitante;
+    private int puntostotal;
 
-    public Partido(Equipo equipoLocal, int puntosLocal, int puntosVisitante,Equipo equipoVisitante) {
+
+    public Partido(Equipo equipoLocal, int puntosLocal, int puntosVisitante, Equipo equipoVisitante) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
     }
 
-    public String toString(){
-        return equipoLocal.toString() +": "+ puntosLocal +", "+  equipoVisitante.toString()+": "+puntosVisitante;
+    public String toString() {
+        return equipoLocal.toString() + ": " + puntosLocal + ", " + equipoVisitante.toString() + ": " + puntosVisitante;
     }
-    public String resultado(@org.jetbrains.annotations.NotNull Equipo e){
+
+    public String resultado() {
         String ganador;
-        if(Objects.equals(e.getNombre(), equipoLocal.getNombre()) || Objects.equals(e.getNombre(), equipoVisitante.getNombre())){
-            if(puntosLocal > puntosVisitante){
-                ganador = equipoLocal.getNombre();
-            } else if (puntosLocal < puntosVisitante) {
-                ganador = equipoVisitante.getNombre();
-            }else {ganador = "empate";}
+        if (puntosLocal > puntosVisitante) {
+            return ganador = equipoLocal.getNombre();
 
-            if(Objects.equals(ganador, e.getNombre())){
-                return "Felicidades tu equipo ganó" + "\n\r"+ this;
-            } else if (Objects.equals(ganador, "empate")) {
-                return "Fue un empate" + "\n\r"+ this;
-            }else {
-                return "Tu equipo perdió" + "\n\r"+ this;
+        } else if (puntosLocal < puntosVisitante) {
+            return ganador = equipoVisitante.getNombre();
+        } else {
+            return ganador = "empate";
             }
-        }else{return "Ese equipo no está en juego";}
+        }
     }
 
-}
+
+
+
