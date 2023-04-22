@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @AllArgsConstructor @Setter
+@AllArgsConstructor@Getter@Setter
 public class Pronostico {
-    Partido partido;
-
-    @Override
-    public String toString() {
-        return partido.toString();
+    private Equipo local;
+    private Equipo visitante;
+    private String resultado;
+    private Usuario jugador;
+    private int numeroPartido;
+    public String toString(){
+        return local +" "+ visitante +" "+ resultado;
     }
 }

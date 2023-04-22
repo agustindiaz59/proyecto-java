@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter@Setter
 public class Equipo {
-    String nombre;
+    private String nombre;
 
     public Equipo(String nombre) {
         this.nombre = nombre;

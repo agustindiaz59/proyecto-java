@@ -1,11 +1,25 @@
 package ar.utn;
 
-import java.util.ArrayList;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.ArrayList;
+@NoArgsConstructor@Getter@Setter
 public class Ronda {
-    private int numero;
     private ArrayList<Partido> partidos = new ArrayList<>();
-    public int puntos(){
-        return 0;
+    public void agregarPartido(Partido p){
+        this.partidos.add(p);
+    }
+    public String buscarPartido(int numeroPartido){
+        String resultado = null;
+        for (Partido par:this.partidos){
+            if (par.getNumeroPartido() == numeroPartido){
+                resultado = par.resultado();
+                return resultado;
+            }
+        }
+        System.out.println(resultado);
+        return resultado;
     }
 }
