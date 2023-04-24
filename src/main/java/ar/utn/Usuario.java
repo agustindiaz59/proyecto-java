@@ -18,32 +18,24 @@ public class Usuario {
     public void agregarPronostico(Pronostico pro){
         this.pronosticos.add(pro);
     }
-    public ArrayList<Integer> numerosPronosticos(){
-        ArrayList<Integer> numeros = new ArrayList<>();
-        for (Pronostico pro : this.pronosticos){
-            numeros.add(pro.getNumeroPartido());
-        }
-        return numeros;
-    }
-    public Pronostico buscarPronostico(int numeroPartido){
-        Pronostico buscado = null;
-        for (Pronostico pro: this.pronosticos){
-            if(pro.getNumeroPartido() == numeroPartido){
-                buscado = pro;
-                break;
-            }
-        }
-        return buscado;
-    }
-    public int calcularAciertos(Ronda r){
+    public void calcularAciertos(Ronda r){
         for (Pronostico pro: pronosticos) {
-            int numPartido = pro.getNumeroPartido();
-            String aComparar = r.buscarPartido(numPartido);
-            if(pro.getResultado().equals(aComparar)){
-                this.aciertos ++;
+            int proNumPartido = pro.getNumeroPartido();
+
+            for (Partido p:r.getPartidos()) {
+                int parNumPartido = p.getNumeroPartido();
+                boolean mismoPartido = proNumPartido == parNumPartido;
+                boolean mismosEquipos =
+                        (p.getEquipoLocal().getNombre().equals(pro.getLocal().getNombre()) && p.getEquipoVisitante().getNombre().equals(pro.getVisitante().getNombre()))
+                        || (p.getEquipoLocal().getNombre().equals(pro.getVisitante().getNombre()) && p.getEquipoVisitante().getNombre().equals(pro.getLocal().getNombre()));
+                boolean ganadorCorrecto = p.resultado().equals(pro.getResultado());
+
+                //Tienen que coincidir los equipos sin importar el orden, el resultado y el numero de partido
+                if(mismoPartido && mismosEquipos && ganadorCorrecto){
+                    this.aciertos++;
+                }
             }
         }
-        return this.aciertos;
     }
     public void sumarPuntaje(int puntaje){
         for(int i = 0; i < this.aciertos;i++){

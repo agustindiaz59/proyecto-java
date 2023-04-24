@@ -13,11 +13,7 @@ public class Main {
 
         //Traigo los datos con el lector y construyo los datos del programa asignandole los valores
         Lector lector = new Lector();
-
         Ronda ronda = new Ronda();
-        for (Partido p : lector.leerPartidosBD()) {
-            ronda.agregarPartido(p);
-        }
 
         Prode campeonato = new Prode(ronda);
         for (Pronostico pro : lector.leerPronosticosBD()) {
